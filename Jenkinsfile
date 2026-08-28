@@ -1,18 +1,21 @@
 pipeline {
     agent any
     environment {
-        AWS_REGION = 'us-east-1' // Your AWS region
-        ECR_REPO = '438825592133.dkr.ecr.us-east-1.amazonaws.com/gopi' // Your ECR repository URI
-        IMAGE_TAG = "v${BUILD_NUMBER}" // Dynamic version based on build number
-        EKS_CLUSTER_NAME = 'gopi_cluster' // Replace with your EKS cluster name
-        KUBECONFIG_PATH = '/opt/kube/config' // Path to kubeconfig file
-        HELM_CHART_PATH = './Helm' // Path to your Helm chart
+        AWS_REGION = 'ap-south-2' 
+        ECR_REPO = '361796581105.dkr.ecr.ap-south-2.amazonaws.com/daniel' 
+        IMAGE_TAG = "v${BUILD_NUMBER}" 
+        EKS_CLUSTER_NAME = 'daniel_cluster' 
+        KUBECONFIG_PATH = '/opt/kube/config' 
+        HELM_CHART_PATH = './Helm' 
     }
     stages {
         stage('SCM checkout') {
             steps {
                 script {
-                    git branch: 'main', credentialsId: 'git-cred', url: 'https://github.com/GopiStarkk/K8s_Real_Project.git'
+                    // Replace the URL with your new DevOps project repo once you have it
+                    git branch: 'main', 
+                        credentialsId: 'git-cred', 
+                        url: 'https://github.com/arulsamydaniel/K8s_Real_Project.git'
                 }
             }
         }
